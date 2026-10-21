@@ -1,0 +1,412 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" href="img/tododrones-logo.png">
+<title>Firmas Todo Drones</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:ital,wght@0,600;0,700;1,600;1,700&family=Barlow:wght@400;500;600&display=swap">
+<style>
+:root { padding-top: env(safe-area-inset-top, 0px); padding-bottom: env(safe-area-inset-bottom, 0px); }
+body { margin: 0; }
+img { max-width: 100%; }
+[hidden] { display: none !important; }
+/* Layout: directorio a la izquierda, "hoja de mail" blanca a la derecha; en celular se apilan. */
+:root {
+  --bg: #eef1f4;
+  --surface: #ffffff;
+  --ink: #23272a;
+  --muted: #5d6670;
+  --line: #d6dce2;
+  --graphite: #3b3e40;
+  --blue: #1a8dd3;
+  --blue-ink: #0f6aa3;
+  --navy: #0a2f50;
+  --green: #00a65c;
+  --chip: #e3eaf1;
+  --focus: #1a8dd3;
+  --paper: #ffffff;
+  --paper-ink: #3b3e40;
+  --ok: #177a45;
+  --font-display: "Barlow Semi Condensed", "Arial Narrow", Arial, sans-serif;
+  --font-body: "Barlow", "Helvetica Neue", Arial, sans-serif;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #15181b; --surface: #1e2226; --ink: #e8ecef; --muted: #9aa4ad; --line: #30363c;
+    --graphite: #c9ced2; --blue: #4fb0ec; --blue-ink: #7cc5f3; --navy: #8fb7dc; --green: #3fcf8a;
+    --chip: #283039; --focus: #4fb0ec; --ok: #5ad69a; color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #15181b; --surface: #1e2226; --ink: #e8ecef; --muted: #9aa4ad; --line: #30363c;
+  --graphite: #c9ced2; --blue: #4fb0ec; --blue-ink: #7cc5f3; --navy: #8fb7dc; --green: #3fcf8a;
+  --chip: #283039; --focus: #4fb0ec; --ok: #5ad69a; color-scheme: dark;
+}
+* { box-sizing: border-box; }
+body { background: var(--bg); color: var(--ink); font-family: var(--font-body); font-size: 15px; line-height: 1.5; }
+.wrap { max-width: 1180px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); padding-block: 28px 56px; }
+header.top { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 16px 24px; padding-bottom: 20px; border-bottom: 1px solid var(--line); margin-bottom: 24px; }
+.eyebrow { font-family: var(--font-display); font-weight: 600; font-style: italic; letter-spacing: .08em; text-transform: uppercase; font-size: 13px; color: var(--blue-ink); margin: 0 0 2px; }
+h1 { font-family: var(--font-display); font-weight: 700; font-style: italic; font-size: clamp(30px, 5vw, 44px); line-height: 1; margin: 0; text-wrap: balance; letter-spacing: -.01em; }
+.lede { color: var(--muted); margin: 8px 0 0; max-width: 60ch; }
+.brands { display: flex; gap: 8px; flex-wrap: wrap; }
+.brands span { background: #fff; border: 1px solid var(--line); border-radius: 6px; padding: 6px 10px; display: flex; align-items: center; height: 40px; }
+.brands img { height: 22px; width: auto; display: block; }
+.grid { display: grid; grid-template-columns: minmax(260px, 340px) minmax(0, 1fr); gap: 24px; align-items: start; }
+@media (max-width: 820px) { .grid { grid-template-columns: minmax(0, 1fr); } }
+.panel { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; }
+.dir { padding: 16px; position: sticky; top: calc(env(safe-area-inset-top, 0px) + 12px); }
+@media (max-width: 820px) { .dir { position: static; } }
+label.lbl { display: block; font-family: var(--font-display); font-weight: 600; text-transform: uppercase; letter-spacing: .06em; font-size: 12px; color: var(--muted); margin-bottom: 6px; }
+input[type="search"], input[type="text"], input[type="email"], select, textarea {
+  width: 100%; font: inherit; color: var(--ink); background: var(--bg); border: 1px solid var(--line); border-radius: 7px; padding: 10px 12px;
+}
+textarea { font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 12.5px; min-height: 110px; resize: vertical; }
+input:focus-visible, select:focus-visible, textarea:focus-visible, button:focus-visible, a:focus-visible, .person:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+.filters { display: flex; gap: 6px; flex-wrap: wrap; margin: 12px 0 10px; }
+.fbtn { font: inherit; font-size: 13px; border: 1px solid var(--line); background: transparent; color: var(--muted); border-radius: 999px; padding: 3px 11px; cursor: pointer; }
+.fbtn[aria-pressed="true"] { background: var(--ink); color: var(--surface); border-color: var(--ink); }
+.list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 2px; max-height: 62vh; overflow-y: auto; }
+.person { width: 100%; text-align: left; font: inherit; color: inherit; background: transparent; border: 0; border-radius: 7px; padding: 9px 10px; cursor: pointer; display: grid; grid-template-columns: 8px minmax(0,1fr); gap: 10px; align-items: center; }
+.person:hover { background: var(--chip); }
+.person[aria-current="true"] { background: var(--chip); }
+.person .dot { width: 8px; height: 30px; border-radius: 2px; transform: skewX(-14deg); }
+.person b { display: block; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.person small { display: block; color: var(--muted); font-size: 13px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.count { color: var(--muted); font-size: 13px; margin: 10px 2px 0; font-variant-numeric: tabular-nums; }
+.empty { color: var(--muted); padding: 14px 10px; font-size: 14px; }
+.main { display: flex; flex-direction: column; gap: 20px; min-width: 0; }
+.sigcard { padding: 18px; min-width: 0; }
+.sighead { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 14px; }
+.sighead h2 { font-family: var(--font-display); font-style: italic; font-weight: 700; font-size: 26px; margin: 0; line-height: 1.1; }
+.sighead p { margin: 2px 0 0; color: var(--muted); font-size: 14px; }
+.variants { display: inline-flex; border: 1px solid var(--line); border-radius: 8px; overflow: hidden; }
+.variants button { font: inherit; font-family: var(--font-display); font-weight: 600; font-size: 14px; background: transparent; color: var(--muted); border: 0; padding: 7px 12px; cursor: pointer; border-right: 1px solid var(--line); }
+.variants button:last-child { border-right: 0; }
+.variants button[aria-pressed="true"] { color: #fff; }
+.variants button[aria-pressed="true"][data-v="nexgen"] { background: #0a2f50; }
+.variants button[aria-pressed="true"][data-v="consumer"] { background: #1a8dd3; }
+.variants button[aria-pressed="true"][data-v="agro"] { background: #00a65c; }
+.mail { background: var(--paper); color: var(--paper-ink); border: 1px solid var(--line); border-radius: 8px; overflow: hidden; }
+.mail .bar { display: flex; gap: 8px; align-items: center; padding: 9px 14px; border-bottom: 1px solid #e4e8ec; font-size: 13px; color: #6b747c; background: #f7f9fa; }
+.mail .bar b { color: #3b3e40; font-weight: 600; }
+.mail .body { padding: 20px 22px 26px; overflow-x: auto; }
+.mail .body p.fake { margin: 0 0 18px; color: #3b3e40; font-size: 14px; }
+.actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 14px; align-items: center; }
+.btn { font: inherit; font-weight: 600; border-radius: 8px; padding: 10px 16px; cursor: pointer; border: 1px solid var(--line); background: var(--surface); color: var(--ink); }
+.btn.primary { background: var(--graphite); border-color: var(--graphite); color: var(--surface); }
+.btn.small { padding: 6px 11px; font-size: 13px; font-weight: 500; }
+.btn.danger { color: #b3261e; }
+.btn:disabled { opacity: .5; cursor: default; }
+a.btn { text-decoration: none; display: inline-block; }
+.status { font-size: 14px; color: var(--ok); min-height: 1.5em; }
+.steps { padding: 18px 20px; }
+.steps h3, .admin h3 { font-family: var(--font-display); font-weight: 700; font-style: italic; font-size: 20px; margin: 0 0 10px; }
+.steps ol { margin: 0; padding-left: 20px; display: flex; flex-direction: column; gap: 6px; max-width: 72ch; }
+.steps .note { margin: 12px 0 0; color: var(--muted); font-size: 14px; max-width: 72ch; }
+kbd { font-family: inherit; font-size: 13px; background: var(--chip); border-radius: 4px; padding: 1px 6px; }
+.admin { padding: 18px 20px; }
+.admin .row { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 12px; }
+@media (max-width: 560px) { .admin .row { grid-template-columns: minmax(0,1fr); } }
+.admin .field { min-width: 0; }
+.admin .full { grid-column: 1 / -1; }
+.admin details { border-top: 1px solid var(--line); margin-top: 16px; padding-top: 14px; }
+.admin summary { cursor: pointer; font-weight: 600; }
+.admin .hint { color: var(--muted); font-size: 13.5px; margin: 6px 0 10px; }
+.code { width: 100%; overflow-x: auto; }
+@media (prefers-reduced-motion: no-preference) { .person, .btn, .fbtn { transition: background-color .12s; } }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <div>
+      <p class="eyebrow">Ecosistema NexGen · Todo Drones</p>
+      <h1>Firmas de email</h1>
+      <p class="lede">Buscá tu nombre, revisá tu firma y copiala en Gmail. Cada firma ya trae el logo de tu empresa, tus datos con links y la mención del ecosistema.</p>
+    </div>
+    <div class="brands" aria-label="Marcas">
+      <span><img id="b-nexgen" alt="NexGen Technology Solutions"></span>
+      <span><img id="b-td" alt="Todo Drones"></span>
+      <span><img id="b-agro" alt="Todo Drones Agricultura"></span>
+    </div>
+  </header>
+
+  <div class="grid">
+    <aside class="panel dir" aria-label="Directorio">
+      <label class="lbl" for="q">Buscá tu nombre</label>
+      <input id="q" type="search" placeholder="Nombre, apellido o mail" autocomplete="off">
+      <div class="filters" role="group" aria-label="Filtrar por empresa">
+        <button class="fbtn" data-f="all" aria-pressed="true">Todas</button>
+        <button class="fbtn" data-f="nexgen" aria-pressed="false">NexGen</button>
+        <button class="fbtn" data-f="consumer" aria-pressed="false">Todo Drones</button>
+        <button class="fbtn" data-f="agro" aria-pressed="false">Agro</button>
+      </div>
+      <ul class="list" id="list"></ul>
+      <p class="count" id="count"></p>
+    </aside>
+
+    <section class="main">
+      <div class="panel sigcard">
+        <div class="sighead">
+          <div>
+            <h2 id="who">Cargando directorio…</h2>
+            <p id="whoSub">La firma aparece acá cuando elegís a una persona.</p>
+          </div>
+          <div class="variants" role="group" aria-label="Variante de firma" id="variants">
+            <button data-v="nexgen" aria-pressed="false">NexGen</button>
+            <button data-v="consumer" aria-pressed="false">Todo Drones</button>
+            <button data-v="agro" aria-pressed="false">TD Agro</button>
+          </div>
+        </div>
+        <div class="mail">
+          <div class="bar"><b>Nuevo mensaje</b><span>· así se ve al final de tus correos</span></div>
+          <div class="body">
+            <p class="fake">Saludos,</p>
+            <div id="preview"></div>
+          </div>
+        </div>
+        <div class="actions">
+          <button class="btn primary" id="copySig" disabled>Copiar firma</button>
+          <button class="btn" id="copyHtml" disabled>Copiar código HTML</button>
+          <a class="btn" href="https://mail.google.com/mail/u/0/#settings/general" target="_blank" rel="noopener">Abrir configuración de Gmail</a>
+          <span class="status" id="status" role="status" aria-live="polite"></span>
+        </div>
+        <div id="copyBox" class="code" hidden>
+          <p class="hint" style="color:var(--muted);font-size:13.5px;margin:12px 0 6px">Tu navegador no dejó copiar automáticamente. Seleccioná el código con <kbd>Ctrl</kbd>+<kbd>A</kbd> y copialo.</p>
+          <textarea id="copyArea" readonly></textarea>
+        </div>
+      </div>
+
+      <div class="panel steps">
+        <h3>Cómo instalarla en Gmail</h3>
+        <ol>
+          <li>Tocá <b>Copiar firma</b>.</li>
+          <li>En Gmail entrá a <b>Configuración</b> (el engranaje) → <b>Ver toda la configuración</b> → pestaña <b>General</b>.</li>
+          <li>Bajá hasta <b>Firma</b>, tocá <b>Crear nueva</b>, ponele tu nombre y pegá con <kbd>Ctrl</kbd>+<kbd>V</kbd> (<kbd>⌘</kbd>+<kbd>V</kbd> en Mac).</li>
+          <li>En <b>Valores predeterminados de firma</b> elegila para <b>correos nuevos</b> y <b>respuestas</b>.</li>
+          <li>Bajá al final de la página y tocá <b>Guardar cambios</b>.</li>
+        </ol>
+        <p class="note">Pegá en la computadora, no desde el celular: la app de Gmail no admite firmas con imágenes. Si los logos aparecen como cuadros vacíos al pegar, recargá esta página y volvé a copiar.</p>
+      </div>
+
+    </section>
+  </div>
+</div>
+
+<script>
+// Imágenes: se sirven desde /img de este mismo sitio. Las firmas copiadas apuntan a la URL pública
+// del sitio; si la página se abre como archivo local, se usan las copias en Google Drive.
+const IMAGES = ["nexgen-logo", "tododrones-logo", "tododrones-agro-logo", "dji-reseller",
+  "ig-nexgen", "fb-nexgen", "li-nexgen", "ig-td", "fb-td", "li-td", "ig-agro", "fb-agro", "li-agro"];
+const DRIVE = {
+  "nexgen-logo": "1Qby_SvCzPsGqGQ8AMdA0AR_qNkkNh19S", "tododrones-logo": "1KNje86yUyt4KIF-cBgdHqoBTo1YhHAcz",
+  "tododrones-agro-logo": "1z5eMgj_gINJEy1uvqKTIif9-rAOZr1bD", "dji-reseller": "1mH9VaOcWKaosH_vnRO52VTVCsJpnqpS4",
+  "ig-nexgen": "167kDLtTimWdXmSamUDERtPsV1YGZ81Ty", "fb-nexgen": "1GSOocRXLwE6W3Rz5OnFe7swa6NPGIcKE",
+  "ig-td": "1hzgM4HfUwGHbiPDXqB3UCkSbd1LOFWGU", "fb-td": "1ECisZL9t97W5UXhsAjqypw0hM8ftg8sg",
+  "ig-agro": "1hnGROrAicHw8gcBmeecoQ3kJKCkrDFVt", "fb-agro": "1GZKkhTv8pV2uwil2FhVrOKEwoHe_8sCB",
+};
+const SITE = /^https:\/\//.test(location.origin) ? location.origin + location.pathname.replace(/[^/]*$/, "") : "";
+
+const BRANDS = {
+  nexgen:   { label: "NexGen", accent: "#0A2F50", name: "#0A2F50", logo: "nexgen-logo", logoW: 150, logoAlt: "NexGen Technology Solutions", icon: "nexgen" },
+  consumer: { label: "Todo Drones", accent: "#1A8DD3", name: "#3B3E40", logo: "tododrones-logo", logoW: 170, logoAlt: "Todo Drones", icon: "td" },
+  agro:     { label: "Todo Drones Agro", accent: "#00A65C", name: "#3B3E40", logo: "tododrones-agro-logo", logoW: 170, logoAlt: "Todo Drones Agricultura", icon: "agro" },
+};
+const ORDER = ["nexgen", "consumer", "agro"];
+
+const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+const url = u => { u = String(u || "").trim(); if (!u) return ""; return /^https?:\/\//i.test(u) ? u : "https://" + u; };
+const prettyUrl = u => String(u || "").replace(/^https?:\/\/(www\.)?/i, "").replace(/\/$/, "");
+const telHref = t => { t = String(t || "").trim(); const d = t.replace(/[^\d]/g, ""); return d ? "tel:" + (t.startsWith("+") ? "+" : "") + d : ""; };
+const mapsHref = a => "https://www.google.com/maps/search/?api=1&query=" + encodeURIComponent(a);
+
+function src(name, mode) {
+  if (mode !== "email") return "img/" + name + ".png";
+  return SITE ? SITE + "img/" + name + ".png" : "https://lh3.googleusercontent.com/d/" + DRIVE[name];
+}
+
+function signatureHTML(p, v, mode) {
+  const b = BRANDS[v];
+  const F = "font-family:Arial,Helvetica,sans-serif;";
+  const lbl = t => `<span style="${F}color:${b.accent};font-weight:bold;font-size:12px;">${t}</span>&nbsp;&nbsp;`;
+  const lnk = (href, text) => `<a href="${esc(href)}" style="${F}color:#3B3E40;text-decoration:none;" target="_blank">${esc(text)}</a>`;
+  const line = inner => `<tr><td style="${F}font-size:13px;line-height:19px;color:#3B3E40;padding:0;">${inner}</td></tr>`;
+
+  const rows = [];
+  if (p.telefono) rows.push(line(lbl("T") + lnk(telHref(p.telefono), p.telefono)));
+  if (p.email) rows.push(line(lbl("M") + lnk("mailto:" + p.email, p.email)));
+  if (p.direccion) rows.push(line(lbl("D") + lnk(mapsHref(p.direccion), p.direccion)));
+  if (p.web) rows.push(line(lbl("W") + `<a href="${esc(url(p.web))}" style="${F}color:${b.accent};text-decoration:none;font-weight:bold;" target="_blank">${esc(prettyUrl(p.web))}</a>`));
+
+  const socials = [["instagram", "ig", "Instagram"], ["facebook", "fb", "Facebook"], ["linkedin", "li", "LinkedIn"]]
+    .filter(([k, ico]) => p[k] && IMAGES.includes(ico + "-" + b.icon))
+    .map(([k, ico, alt]) => `<a href="${esc(url(p[k]))}" target="_blank" style="text-decoration:none;"><img src="${src(ico + "-" + b.icon, mode)}" width="22" height="22" alt="${alt}" style="display:inline-block;border:0;width:22px;height:22px;"></a>`);
+  const socialRow = socials.length ? `<tr><td style="padding:9px 0 0 0;">${socials.join("&nbsp;&nbsp;")}</td></tr>` : "";
+
+  const sub = [p.puesto, p.area].filter(Boolean);
+  const head =
+    `<tr><td style="${F}font-size:17px;line-height:21px;font-weight:bold;color:${b.name};padding:0;">${esc(p.nombre)}</td></tr>` +
+    (sub[0] ? `<tr><td style="${F}font-size:13px;line-height:18px;font-weight:bold;color:${b.accent};padding:2px 0 0 0;">${esc(sub[0])}</td></tr>` : "") +
+    (sub[1] ? `<tr><td style="${F}font-size:12px;line-height:17px;color:#6B747C;padding:0 0 8px 0;">${esc(sub[1])}</td></tr>` : `<tr><td style="padding:0 0 8px 0;font-size:1px;line-height:1px;">&nbsp;</td></tr>`);
+
+  const eco = ecosystem(v, mode, F);
+
+  return `<table cellpadding="0" cellspacing="0" border="0" style="border-collapse:collapse;${F}color:#3B3E40;"><tr>` +
+    `<td valign="middle" style="padding:0 18px 0 0;border-right:2px solid ${b.accent};vertical-align:middle;">` +
+      `<img src="${src(b.logo, mode)}" width="${b.logoW}" alt="${b.logoAlt}" style="display:block;border:0;width:${b.logoW}px;height:auto;">` +
+    `</td>` +
+    `<td valign="top" style="padding:0 0 0 18px;vertical-align:top;"><table cellpadding="0" cellspacing="0" border="0" style="border-collapse:collapse;">${head}${rows.join("")}${socialRow}</table></td>` +
+    `</tr>${eco}</table>`;
+}
+
+function ecosystem(v, mode, F) {
+  const cap = t => `<span style="${F}font-size:10px;letter-spacing:1px;text-transform:uppercase;color:#8A939B;">${t}</span>`;
+  const img = (n, w, alt) => `<img src="${src(n, mode)}" width="${w}" alt="${alt}" style="display:inline-block;border:0;width:${w}px;height:auto;vertical-align:middle;">`;
+  let inner;
+  if (v === "nexgen") {
+    inner = `<td style="padding:0 12px 0 0;vertical-align:middle;">${cap("Ecosistema NexGen")}</td>` +
+      `<td style="padding:0 14px 0 0;vertical-align:middle;">${img("tododrones-logo", 100, "Todo Drones")}</td>` +
+      `<td style="padding:0;vertical-align:middle;">${img("tododrones-agro-logo", 100, "Todo Drones Agricultura")}</td>`;
+  } else {
+    inner = `<td style="padding:0 10px 0 0;vertical-align:middle;">${cap("Parte del ecosistema")}</td>` +
+      `<td style="padding:0 16px 0 0;vertical-align:middle;border-right:1px solid #E1E5E9;">${img("nexgen-logo", 78, "NexGen Technology Solutions")}</td>` +
+      `<td style="padding:0 0 0 16px;vertical-align:middle;">${img("dji-reseller", 130, "DJI Authorized Reseller")}</td>`;
+  }
+  return `<tr><td colspan="2" style="padding:14px 0 0 0;"><table cellpadding="0" cellspacing="0" border="0" style="border-collapse:collapse;border-top:1px solid #E1E5E9;"><tr><td style="padding:12px 0 0 0;"><table cellpadding="0" cellspacing="0" border="0" style="border-collapse:collapse;"><tr>${inner}</tr></table></td></tr></table></td></tr>`;
+}
+
+// ---------- estado ----------
+const state = { people: [], q: "", filter: "all", selected: null, variant: null };
+const $ = id => document.getElementById(id);
+let loaded = false, failed = false;
+const docId = email => norm(email).replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
+
+const norm = s => String(s || "").normalize("NFD").replace(/[̀-ͯ]/g, "").toLowerCase();
+
+function renderList() {
+  const q = norm(state.q).trim();
+  const items = state.people
+    .filter(p => state.filter === "all" || p.empresa === state.filter)
+    .filter(p => !q || norm(p.nombre + " " + p.email + " " + (p.puesto || "")).includes(q))
+    .sort((a, b) => a.nombre.localeCompare(b.nombre, "es"));
+  const ul = $("list");
+  ul.textContent = "";
+  if (!state.people.length) {
+    const li = document.createElement("li"); li.className = "empty";
+    li.textContent = failed ? "No se pudo cargar el directorio. Recargá la página." : (loaded ? "Todavía no hay personas cargadas." : "Cargando…");
+    ul.append(li);
+  } else if (!items.length) {
+    const li = document.createElement("li"); li.className = "empty"; li.textContent = "No encontramos a nadie con ese nombre.";
+    ul.append(li);
+  }
+  for (const p of items) {
+    const li = document.createElement("li");
+    const btn = document.createElement("button");
+    btn.className = "person"; btn.type = "button";
+    btn.setAttribute("aria-current", String(state.selected === p.id));
+    const dot = document.createElement("span"); dot.className = "dot"; dot.style.background = BRANDS[p.empresa]?.accent || "#888";
+    const txt = document.createElement("span");
+    const b = document.createElement("b"); b.textContent = p.nombre;
+    const s = document.createElement("small"); s.textContent = [p.puesto, BRANDS[p.empresa]?.label].filter(Boolean).join(" · ");
+    txt.append(b, s); btn.append(dot, txt);
+    btn.addEventListener("click", () => select(p.id));
+    li.append(btn); ul.append(li);
+  }
+  $("count").textContent = state.people.length ? `${items.length} de ${state.people.length} personas` : "";
+}
+
+function current() { return state.people.find(p => p.id === state.selected) || null; }
+
+function renderSig() {
+  const p = current();
+  const has = !!p;
+  $("copySig").disabled = !has; $("copyHtml").disabled = !has;
+  for (const b of $("variants").querySelectorAll("button")) b.setAttribute("aria-pressed", String(has && b.dataset.v === state.variant));
+  if (!p) {
+    $("who").textContent = state.people.length ? "Elegí tu nombre" : (loaded ? "Directorio vacío" : "Cargando directorio…");
+    $("whoSub").textContent = "La firma aparece acá cuando elegís a una persona.";
+    $("preview").innerHTML = signatureHTML(SAMPLE, "consumer", "preview");
+    $("preview").style.opacity = ".35";
+    return;
+  }
+  $("preview").style.opacity = "1";
+  $("who").textContent = p.nombre;
+  const own = p.empresa === state.variant;
+  $("whoSub").textContent = own ? `Firma ${BRANDS[p.empresa].label}` : `Vista de prueba con la variante ${BRANDS[state.variant].label}. Tu firma oficial es ${BRANDS[p.empresa].label}.`;
+  $("preview").innerHTML = signatureHTML(p, state.variant, "preview");
+}
+
+const SAMPLE = { nombre: "Nombre Apellido", puesto: "Puesto", area: "Área", telefono: "+54 9 11 0000 0000", email: "nombre@tododrones.com.ar", direccion: "Dirección", web: "tododrones.com.ar", instagram: "x", facebook: "x" };
+
+function select(id) {
+  state.selected = id;
+  const p = current();
+  state.variant = p ? p.empresa : null;
+  $("status").textContent = ""; $("copyBox").hidden = true;
+  renderList(); renderSig();
+  if (p) history.replaceState(null, "", "#" + p.id);
+}
+
+// ---------- copiar ----------
+async function copyRich() {
+  const p = current(); if (!p) return;
+  const html = signatureHTML(p, state.variant, "email");
+  let ok = false;
+  try {
+    if (window.ClipboardItem && navigator.clipboard?.write) {
+      const text = [p.nombre, p.puesto, p.telefono, p.email, p.direccion].filter(Boolean).join("\n");
+      await navigator.clipboard.write([new ClipboardItem({ "text/html": new Blob([html], { type: "text/html" }), "text/plain": new Blob([text], { type: "text/plain" }) })]);
+      ok = true;
+    }
+  } catch (e) { ok = false; }
+  if (!ok) {
+    const box = document.createElement("div");
+    box.contentEditable = "true"; box.innerHTML = html;
+    box.style.cssText = "position:fixed;left:-9999px;top:0;background:#fff;";
+    document.body.append(box);
+    const r = document.createRange(); r.selectNodeContents(box);
+    const sel = getSelection(); sel.removeAllRanges(); sel.addRange(r);
+    try { ok = document.execCommand("copy"); } catch (e) { ok = false; }
+    sel.removeAllRanges(); box.remove();
+  }
+  $("status").textContent = ok ? "Firma copiada. Pegala en Gmail → Configuración → Firma." : "";
+  if (!ok) showManual(html);
+}
+async function copyCode() {
+  const p = current(); if (!p) return;
+  const html = signatureHTML(p, state.variant, "email");
+  try { await navigator.clipboard.writeText(html); $("status").textContent = "Código HTML copiado."; $("copyBox").hidden = true; }
+  catch (e) { showManual(html); }
+}
+function showManual(html) { $("status").textContent = ""; $("copyBox").hidden = false; $("copyArea").value = html; $("copyArea").focus(); $("copyArea").select(); }
+
+// ---------- arranque ----------
+$("b-nexgen").src = "img/nexgen-logo.png"; $("b-td").src = "img/tododrones-logo.png"; $("b-agro").src = "img/tododrones-agro-logo.png";
+$("q").addEventListener("input", e => { state.q = e.target.value; renderList(); });
+for (const b of document.querySelectorAll(".fbtn")) b.addEventListener("click", () => {
+  state.filter = b.dataset.f;
+  for (const x of document.querySelectorAll(".fbtn")) x.setAttribute("aria-pressed", String(x === b));
+  renderList();
+});
+for (const b of $("variants").querySelectorAll("button")) b.addEventListener("click", () => { if (!current()) return; state.variant = b.dataset.v; renderSig(); });
+$("copySig").addEventListener("click", copyRich);
+$("copyHtml").addEventListener("click", copyCode);
+renderList(); renderSig();
+
+fetch("people.json", { cache: "no-cache" })
+  .then(r => { if (!r.ok) throw new Error(r.status); return r.json(); })
+  .then(list => {
+    state.people = list.map(p => ({ ...p, id: docId(p.email) }));
+    loaded = true;
+    const hash = decodeURIComponent((location.hash || "").slice(1));
+    if (hash && state.people.some(p => p.id === hash)) { select(hash); return; }
+    renderList(); renderSig();
+  })
+  .catch(() => { failed = true; renderList(); renderSig(); });
+</script>
+</body>
+</html>
