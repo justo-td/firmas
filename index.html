@@ -256,7 +256,7 @@ kbd { font-family: inherit; font-size: 13px; background: var(--chip); border-rad
 <script>
 // Imágenes: se sirven desde /img de este mismo sitio. Las firmas copiadas apuntan a la URL pública
 // del sitio; si la página se abre como archivo local, se usan las copias en Google Drive.
-const IMAGES = ["nexgen-logo", "tododrones-logo", "tododrones-agro-logo", "dji-reseller",
+const IMAGES = ["nexgen-logo", "tododrones-logo", "tododrones-agro-logo", "tododrones-enterprise-logo", "dji-reseller",
   "ig-nexgen", "fb-nexgen", "li-nexgen", "ig-td", "fb-td", "li-td", "ig-agro", "fb-agro", "li-agro"];
 const DRIVE = {
   "nexgen-logo": "1Qby_SvCzPsGqGQ8AMdA0AR_qNkkNh19S", "tododrones-logo": "1KNje86yUyt4KIF-cBgdHqoBTo1YhHAcz",
@@ -325,8 +325,9 @@ function ecosystem(v, mode, F) {
   let inner;
   if (v === "nexgen") {
     inner = `<td style="padding:0 12px 0 0;vertical-align:middle;">${cap("Ecosistema NexGen")}</td>` +
-      `<td style="padding:0 14px 0 0;vertical-align:middle;">${img("tododrones-logo", 100, "Todo Drones")}</td>` +
-      `<td style="padding:0;vertical-align:middle;">${img("tododrones-agro-logo", 100, "Todo Drones Agricultura")}</td>`;
+      `<td style="padding:0 12px 0 0;vertical-align:middle;">${img("tododrones-logo", 96, "Todo Drones")}</td>` +
+      `<td style="padding:0 12px 0 0;vertical-align:middle;">${img("tododrones-agro-logo", 96, "Todo Drones Agricultura")}</td>` +
+      `<td style="padding:0;vertical-align:middle;">${img("tododrones-enterprise-logo", 96, "Todo Drones Enterprise")}</td>`;
   } else {
     inner = `<td style="padding:0 10px 0 0;vertical-align:middle;">${cap("Parte del ecosistema")}</td>` +
       `<td style="padding:0 16px 0 0;vertical-align:middle;border-right:1px solid #E1E5E9;">${img("nexgen-logo", 78, "NexGen Technology Solutions")}</td>` +
