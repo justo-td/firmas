@@ -28,6 +28,12 @@ Editá `people.json` (desde GitHub mismo) y hacé commit; Vercel lo publica solo
 Link directo a la firma de alguien: `https://<dominio>/#<mail con guiones>`,
 por ejemplo `#justo-tododrones-com-ar`.
 
+## Foto de perfil
+
+Al final de la página cada persona sube una foto, la encuadra (arrastrar + zoom) y descarga
+un JPG de 720 × 720 px para su cuenta de Google. Mínimo 250 × 250 px. Todo se procesa en el
+navegador; no se guarda ninguna foto.
+
 ## Imágenes
 
 Los logos e íconos de las firmas se sirven desde `img/` en este mismo sitio, así que el

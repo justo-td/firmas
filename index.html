@@ -118,6 +118,28 @@ kbd { font-family: inherit; font-size: 13px; background: var(--chip); border-rad
 .admin .hint { color: var(--muted); font-size: 13.5px; margin: 6px 0 10px; }
 .code { width: 100%; overflow-x: auto; }
 @media (prefers-reduced-motion: no-preference) { .person, .btn, .fbtn { transition: background-color .12s; } }
+.photo { padding: 18px 20px; }
+.photo h3 { font-family: var(--font-display); font-weight: 700; font-style: italic; font-size: 20px; margin: 0 0 4px; }
+.photo .hint { color: var(--muted); font-size: 14px; margin: 0 0 14px; max-width: 72ch; }
+.photo-grid { display: grid; grid-template-columns: minmax(0, 320px) minmax(0, 1fr); gap: 20px; align-items: start; }
+@media (max-width: 640px) { .photo-grid { grid-template-columns: minmax(0, 1fr); } }
+.drop { position: relative; width: 100%; max-width: 320px; aspect-ratio: 1; border: 1.5px dashed var(--line); border-radius: 10px; background: var(--bg); display: grid; place-items: center; text-align: center; color: var(--muted); font-size: 14px; padding: 16px; cursor: pointer; overflow: hidden; }
+.drop.over { border-color: var(--blue); background: var(--chip); }
+.drop.has { padding: 0; border-style: solid; cursor: grab; touch-action: none; }
+.drop.has.dragging { cursor: grabbing; }
+.drop canvas { width: 100%; height: 100%; display: block; }
+.drop .ring { position: absolute; inset: 0; pointer-events: none; border-radius: 10px; box-shadow: inset 0 0 0 9999px rgba(10, 20, 30, .38); -webkit-mask: radial-gradient(circle closest-side, transparent 99%, #000 100%); mask: radial-gradient(circle closest-side, transparent 99%, #000 100%); }
+.drop b { display: block; color: var(--ink); font-size: 15px; margin-bottom: 4px; }
+.photo-side { display: flex; flex-direction: column; gap: 12px; min-width: 0; }
+.zoom { display: flex; align-items: center; gap: 10px; }
+.zoom input { flex: 1; min-width: 0; accent-color: var(--graphite); }
+.zoom span { font-size: 13px; color: var(--muted); }
+.meta { font-size: 13.5px; color: var(--muted); font-variant-numeric: tabular-nums; margin: 0; }
+.meta.warn { color: #a15c00; }
+.meta.err { color: #b3261e; }
+.thumbs { display: flex; gap: 12px; align-items: center; }
+.thumbs img { border-radius: 50%; border: 1px solid var(--line); background: #fff; }
+.photo ol { margin: 0; padding-left: 20px; font-size: 14px; color: var(--muted); display: flex; flex-direction: column; gap: 4px; }
 </style>
 </head>
 <body>
@@ -126,7 +148,7 @@ kbd { font-family: inherit; font-size: 13px; background: var(--chip); border-rad
     <div>
       <p class="eyebrow">Ecosistema NexGen · Todo Drones</p>
       <h1>Firmas de email</h1>
-      <p class="lede">Buscá tu nombre, revisá tu firma y copiala en Gmail. Cada firma ya trae el logo de tu empresa, tus datos con links y la mención del ecosistema.</p>
+      <p class="lede">Buscá tu nombre, revisá tu firma y copiala en Gmail. Más abajo podés preparar tu foto de perfil. Cada firma ya trae el logo de tu empresa, tus datos con links y la mención del ecosistema.</p>
     </div>
     <div class="brands" aria-label="Marcas">
       <span><img id="b-nexgen" alt="NexGen Technology Solutions"></span>
@@ -191,6 +213,40 @@ kbd { font-family: inherit; font-size: 13px; background: var(--chip); border-rad
           <li>Bajá al final de la página y tocá <b>Guardar cambios</b>.</li>
         </ol>
         <p class="note">Pegá en la computadora, no desde el celular: la app de Gmail no admite firmas con imágenes. Si los logos aparecen como cuadros vacíos al pegar, recargá esta página y volvé a copiar.</p>
+      </div>
+
+      <div class="panel photo" id="foto">
+        <h3>Foto de perfil</h3>
+        <p class="hint">Subí una foto tuya y encuadrala. Se exporta en 720 × 720 píxeles para tu cuenta de Google, que es la foto que ven los demás en Gmail. La foto tiene que medir al menos 250 × 250 píxeles. Nada se sube a ningún servidor: todo pasa en tu navegador.</p>
+        <div class="photo-grid">
+          <div>
+            <div class="drop" id="drop" tabindex="0" role="button" aria-label="Elegir foto">
+              <div id="dropMsg"><b>Elegí o arrastrá una foto</b>JPG o PNG, mínimo 250 × 250 px</div>
+            </div>
+            <input type="file" id="photoFile" accept="image/jpeg,image/png,image/webp" hidden>
+          </div>
+          <div class="photo-side">
+            <div class="zoom">
+              <span>Zoom</span>
+              <input type="range" id="zoom" min="1" max="4" step="0.01" value="1" disabled aria-label="Zoom">
+            </div>
+            <p class="meta" id="photoMeta">Arrastrá la foto para centrar tu cara dentro del círculo.</p>
+            <div class="thumbs" aria-hidden="true" id="thumbs" hidden>
+              <img id="th1" width="96" height="96" alt="">
+              <img id="th2" width="48" height="48" alt="">
+              <img id="th3" width="28" height="28" alt="">
+            </div>
+            <div class="actions" style="margin-top:0">
+              <button class="btn primary" id="photoDl" disabled>Descargar 720 × 720</button>
+              <button class="btn" id="photoNew" hidden>Elegir otra foto</button>
+            </div>
+            <ol>
+              <li>Descargá la foto.</li>
+              <li>Entrá a <a href="https://myaccount.google.com/personal-info" target="_blank" rel="noopener">tu cuenta de Google → Información personal</a> y tocá <b>Foto de perfil</b>.</li>
+              <li>Subí el archivo descargado y guardá.</li>
+            </ol>
+          </div>
+        </div>
       </div>
 
     </section>
@@ -383,6 +439,123 @@ async function copyCode() {
   catch (e) { showManual(html); }
 }
 function showManual(html) { $("status").textContent = ""; $("copyBox").hidden = false; $("copyArea").value = html; $("copyArea").focus(); $("copyArea").select(); }
+
+// ---------- foto de perfil ----------
+// Recorte cuadrado: la foto cubre siempre el cuadro (zoom mínimo = "cover") y se exporta a 720 × 720.
+const OUT = 720, MIN = 250, VIEW = 640;
+const photo = { img: null, w: 0, h: 0, zoom: 1, cx: 0.5, cy: 0.5 };
+const drop = $("drop"), pfile = $("photoFile");
+let pcanvas = null;
+
+function cropRect() {
+  const side = Math.min(photo.w, photo.h) / photo.zoom;
+  let x = photo.cx * photo.w - side / 2, y = photo.cy * photo.h - side / 2;
+  x = Math.max(0, Math.min(photo.w - side, x)); y = Math.max(0, Math.min(photo.h - side, y));
+  photo.cx = (x + side / 2) / photo.w; photo.cy = (y + side / 2) / photo.h;
+  return { x, y, side };
+}
+function drawTo(canvas, size) {
+  const c = canvas.getContext("2d"), r = cropRect();
+  canvas.width = size; canvas.height = size;
+  c.imageSmoothingEnabled = true; c.imageSmoothingQuality = "high";
+  c.fillStyle = "#fff"; c.fillRect(0, 0, size, size);
+  c.drawImage(photo.img, r.x, r.y, r.side, r.side, 0, 0, size, size);
+  return r;
+}
+let thumbTimer = 0;
+function renderPhoto() {
+  if (!photo.img) return;
+  const r = drawTo(pcanvas, VIEW);
+  const src = Math.round(r.side);
+  const m = $("photoMeta");
+  m.className = "meta" + (src < OUT ? " warn" : "");
+  m.textContent = `Original ${photo.w} × ${photo.h} px · recorte ${src} × ${src} px → 720 × 720 px` +
+    (src < OUT ? ". El recorte es más chico que 720 px: se va a agrandar y puede verse un poco borroso." : "");
+  clearTimeout(thumbTimer);
+  thumbTimer = setTimeout(() => {
+    const url = pcanvas.toDataURL("image/jpeg", 0.85);
+    for (const id of ["th1", "th2", "th3"]) $(id).src = url;
+    $("thumbs").hidden = false;
+  }, 120);
+}
+function photoError(msg) {
+  const m = $("photoMeta"); m.className = "meta err"; m.textContent = msg;
+}
+function loadPhoto(file) {
+  if (!file) return;
+  if (/heic|heif/i.test(file.type) || /\.hei[cf]$/i.test(file.name)) { photoError("Las fotos HEIC del iPhone no se pueden leer acá. Exportala como JPG (en el iPhone: Compartir → Guardar en Archivos, o mandátela por mail) y probá de nuevo."); return; }
+  if (!/^image\//.test(file.type)) { photoError("Ese archivo no es una imagen. Usá una foto JPG o PNG."); return; }
+  const url = URL.createObjectURL(file);
+  const img = new Image();
+  img.onload = () => {
+    const w = img.naturalWidth, h = img.naturalHeight;
+    if (w < MIN || h < MIN) { URL.revokeObjectURL(url); photoError(`La foto mide ${w} × ${h} px. Tiene que medir al menos ${MIN} × ${MIN} px: probá con una de mejor calidad.`); return; }
+    if (photo.img) URL.revokeObjectURL(photo.img.src);
+    Object.assign(photo, { img, w, h, zoom: 1, cx: 0.5, cy: 0.42 });
+    if (!pcanvas) {
+      pcanvas = document.createElement("canvas");
+      drop.textContent = ""; drop.append(pcanvas);
+      const ring = document.createElement("div"); ring.className = "ring"; drop.append(ring);
+    }
+    drop.classList.add("has"); drop.setAttribute("aria-label", "Foto: arrastrá para encuadrar");
+    $("zoom").disabled = false; $("zoom").value = 1;
+    $("photoDl").disabled = false; $("photoNew").hidden = false;
+    renderPhoto();
+  };
+  img.onerror = () => { URL.revokeObjectURL(url); photoError("No pudimos abrir esa imagen. Probá con otra foto en JPG o PNG."); };
+  img.src = url;
+}
+
+drop.addEventListener("click", () => { if (!photo.img) pfile.click(); });
+drop.addEventListener("keydown", e => {
+  if (!photo.img && (e.key === "Enter" || e.key === " ")) { e.preventDefault(); pfile.click(); return; }
+  if (!photo.img) return;
+  const step = 0.02 / photo.zoom, k = { ArrowLeft: [-step, 0], ArrowRight: [step, 0], ArrowUp: [0, -step], ArrowDown: [0, step] }[e.key];
+  if (k) { e.preventDefault(); photo.cx += k[0]; photo.cy += k[1]; renderPhoto(); }
+});
+pfile.addEventListener("change", () => { loadPhoto(pfile.files[0]); pfile.value = ""; });
+$("photoNew").addEventListener("click", () => pfile.click());
+for (const ev of ["dragenter", "dragover"]) drop.addEventListener(ev, e => { e.preventDefault(); drop.classList.add("over"); });
+for (const ev of ["dragleave", "drop"]) drop.addEventListener(ev, e => { e.preventDefault(); drop.classList.remove("over"); });
+drop.addEventListener("drop", e => loadPhoto(e.dataTransfer.files[0]));
+
+let drag = null;
+drop.addEventListener("pointerdown", e => {
+  if (!photo.img) return;
+  drag = { x: e.clientX, y: e.clientY, cx: photo.cx, cy: photo.cy };
+  drop.setPointerCapture(e.pointerId); drop.classList.add("dragging");
+});
+drop.addEventListener("pointermove", e => {
+  if (!drag) return;
+  const box = drop.getBoundingClientRect(), side = Math.min(photo.w, photo.h) / photo.zoom;
+  const k = side / box.width;
+  photo.cx = drag.cx - (e.clientX - drag.x) * k / photo.w;
+  photo.cy = drag.cy - (e.clientY - drag.y) * k / photo.h;
+  renderPhoto();
+});
+for (const ev of ["pointerup", "pointercancel"]) drop.addEventListener(ev, () => { drag = null; drop.classList.remove("dragging"); });
+drop.addEventListener("wheel", e => {
+  if (!photo.img) return;
+  e.preventDefault();
+  photo.zoom = Math.max(1, Math.min(4, photo.zoom * (e.deltaY < 0 ? 1.06 : 1 / 1.06)));
+  $("zoom").value = photo.zoom; renderPhoto();
+}, { passive: false });
+$("zoom").addEventListener("input", e => { photo.zoom = +e.target.value; renderPhoto(); });
+
+$("photoDl").addEventListener("click", () => {
+  if (!photo.img) return;
+  const out = document.createElement("canvas");
+  drawTo(out, OUT);
+  out.toBlob(blob => {
+    const p = current();
+    const a = document.createElement("a");
+    a.href = URL.createObjectURL(blob);
+    a.download = "foto-perfil-" + (p ? p.id.replace(/-tododrones-com-ar$/, "") : "720") + ".jpg";
+    document.body.append(a); a.click(); a.remove();
+    setTimeout(() => URL.revokeObjectURL(a.href), 4000);
+    const m = $("photoMeta"); m.className = "meta"; m.textContent = "Listo: se descargó tu foto de 720 × 720 px.";
+  }, "image/jpeg", 0.92);
+});
 
 // ---------- arranque ----------
 $("b-nexgen").src = "img/nexgen-logo.png"; $("b-td").src = "img/tododrones-logo.png"; $("b-agro").src = "img/tododrones-agro-logo.png";
